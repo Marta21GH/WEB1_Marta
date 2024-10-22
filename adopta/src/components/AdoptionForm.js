@@ -1,4 +1,3 @@
-// src/components/AdoptionForm.js
 import React from 'react';
 
 const AdoptionForm = ({ pet, onBack }) => {
