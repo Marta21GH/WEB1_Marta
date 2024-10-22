@@ -39,6 +39,7 @@ const App = () => {
     age: '',
     size: ''
   });
+  const [selectedPet, setSelectedPet] = useState(null);
 
   const handleFilterChange = (event) => {
     const { name, value } = event.target;
@@ -79,45 +80,59 @@ const App = () => {
     return null;
   };
 
+  const handleSelectPet = (pet) => {
+    setSelectedPet(pet);
+  };
+
+  const handleBack = () => {
+    setSelectedPet(null);
+  };
+
   return (
     <div className="container">
       <h1 className="title">¡Adopta un amigo peludo!</h1>
-      <div className="filters">
-        <label>
-          Tipo:
-          <select name="type" onChange={handleFilterChange}>
-            <option value="">Todos</option>
-            <option value="dog">Perro</option>
-            <option value="cat">Gato</option>
-          </select>
-        </label>
-        <label>
-          Raza:
-          <select name="breed" onChange={handleFilterChange}>
-            <option value="">Todas</option>
-            {getBreedOptions()}
-          </select>
-        </label>
-        <label>
-          Edad:
-          <select name="age" onChange={handleFilterChange}>
-            <option value="">Todas</option>
-            <option value="Cachorro">Cachorro</option>
-            <option value="Adulto">Adulto</option>
-          </select>
-        </label>
-        <label>
-          Tamaño:
-          <select name="size" onChange={handleFilterChange}>
-            <option value="">Todos</option>
-            <option value="Pequeño">Pequeño</option>
-            <option value="Mediano">Mediano</option>
-            <option value="Grande">Grande</option>
-          </select>
-        </label>
-        <button onClick={filterPets}>Aplicar Filtros</button>
-      </div>
-      <PetList pets={pets} />
+      {selectedPet ? (
+        <AdoptionForm pet={selectedPet} onBack={handleBack} />
+      ) : (
+        <>
+          <div className="filters">
+            <label>
+              Tipo:
+              <select name="type" onChange={handleFilterChange}>
+                <option value="">Todos</option>
+                <option value="dog">Perro</option>
+                <option value="cat">Gato</option>
+              </select>
+            </label>
+            <label>
+              Raza:
+              <select name="breed" onChange={handleFilterChange}>
+                <option value="">Todas</option>
+                {getBreedOptions()}
+              </select>
+            </label>
+            <label>
+              Edad:
+              <select name="age" onChange={handleFilterChange}>
+                <option value="">Todas</option>
+                <option value="Cachorro">Cachorro</option>
+                <option value="Adulto">Adulto</option>
+              </select>
+            </label>
+            <label>
+              Tamaño:
+              <select name="size" onChange={handleFilterChange}>
+                <option value="">Todos</option>
+                <option value="Pequeño">Pequeño</option>
+                <option value="Mediano">Mediano</option>
+                <option value="Grande">Grande</option>
+              </select>
+            </label>
+            <button onClick={filterPets}>Aplicar Filtros</button>
+          </div>
+          <PetList pets={pets} onSelectPet={handleSelectPet} />
+        </>
+      )}
     </div>
   );
 };
