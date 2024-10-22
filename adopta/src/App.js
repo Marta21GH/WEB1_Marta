@@ -115,20 +115,9 @@ const App = () => {
             <option value="Grande">Grande</option>
           </select>
         </label>
-        <button onClick={filterPets} className="filter-button">Aplicar Filtros</button>
+        <button onClick={filterPets}>Aplicar Filtros</button>
       </div>
-      <div className="pets">
-        {pets.map(pet => (
-          <div className="pet-card" key={pet.id}>
-            <img src={pet.image} alt={pet.name} className="pet-image" />
-            <p><strong>Nombre:</strong> {pet.name}</p>
-            <p><strong>Tipo:</strong> {pet.type}</p>
-            <p><strong>Raza:</strong> {pet.breed}</p>
-            <p><strong>Edad:</strong> {pet.age}</p>
-            <p><strong>Tamaño:</strong> {pet.size}</p>
-          </div>
-        ))}
-      </div>
+      <PetList pets={pets} />
     </div>
   );
 };
