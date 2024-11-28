@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "target": "ESNext", // Mejor compatibilidad con las últimas características de JS/TS
+    "lib": ["DOM", "DOM.Iterable", "ESNext"], // Soporte para APIs de navegador y ESNext
+    "allowJs": true, // Permitir archivos JS junto con TS
+    "skipLibCheck": true, // Omitir verificación de tipos en archivos de dependencias
+    "strict": true, // Habilitar comprobación estricta de tipos
+    "noEmit": true, // Evita generar archivos .js, ya que Next.js los maneja
+    "incremental": true, // Compilación incremental para mejorar el rendimiento
+    "module": "ESNext", // Usa ESNext para la resolución de módulos
+    "esModuleInterop": true, // Permitir interoperabilidad con módulos CommonJS
+    "moduleResolution": "Node", // Resolución de módulos basada en Node.js
+    "resolveJsonModule": true, // Permitir la importación de archivos JSON
+    "isolatedModules": true, // Asegurar que cada archivo se compile de forma independiente
+    "jsx": "react-jsx", // Habilitar JSX con soporte para React (resuelve tu error de JSX)
+    "baseUrl": ".", // Base para las rutas relativas
+    "paths": {
+      "@/*": ["src/*"] // Configuración de alias para rutas como '@/components'
+    },
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
+  },
+  "include": [
+    "next-env.d.ts",
+    ".next/types/**/*.ts", // Tipos generados por Next.js
+    "**/*.ts",
+    "**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules" // Excluir dependencias
+  ]
+}
