@@ -1,0 +1,159 @@
+.container {
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  height: 100vh; /* Asegura que el contenedor tenga toda la altura de la ventana */
+}
+
+.leftSection {
+  width: 50%;
+  padding: 50px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Botón de "Crear Proyecto" */
+.createProjectButton {
+  background-color: white;
+  color: #0070f3;
+  border: 1px solid #0070f3;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 20px;
+}
+
+.createProjectButton:hover {
+  background-color: #0070f3;
+  color: white;
+}
+
+/* Estilo de la lista de proyectos */
+.rightSection .projectsList {
+  background-color: #ffffff; /* Cambiamos el fondo a blanco */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.details p {
+  margin-bottom: 10px;
+}
+
+.inputField {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.button {
+  padding: 10px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.modifyButton {
+  background-color: #28a745; /* Verde */
+}
+
+.saveButton {
+  background-color: #28a745; /* Verde */
+}
+
+.cancelButton {
+  background-color: #0070f3; /* Azul */
+}
+
+.deleteButton {
+  background-color: #dc3545; /* Rojo */
+}
+
+.buttons .bottom-buttons {
+  display: flex;
+  justify-content: center; /* Centra los botones */
+  gap: 40px; /* Añade un espacio de 40px entre los botones */
+  margin-top: auto; /* Coloca los botones al final */
+  width: 100%; /* Asegura que ocupe todo el ancho disponible */
+}
+
+/* Estilo del pop-up de eliminación */
+.deletePopup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.deletePopup div {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.deletePopup button {
+  margin-top: 10px;
+  padding: 10px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+/* Botón de Eliminar (Rojo) */
+.deletePopup .deleteButton {
+  background-color: #dc3545; /* Rojo */
+  color: white;
+  margin-right: 10px; /* Espacio a la derecha */
+}
+
+.deletePopup .deleteButton:hover {
+  background-color: #c82333;
+}
+
+/* Botón de Cancelar (Azul) */
+.deletePopup .cancelButton {
+  background-color: #0070f3; /* Azul */
+  color: white;
+}
+
+.deletePopup .cancelButton:hover {
+  background-color: #0056b3;
+}
+
+/* Alineación de los botones (separados por 40px) */
+.deletePopup div {
+  display: flex;
+  justify-content: center;
+  gap: 40px; /* Añade un espacio de 40px entre los botones */
+}

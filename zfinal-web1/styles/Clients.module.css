@@ -1,0 +1,261 @@
+/* Clients.module.css */
+
+.container {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .title {
+    font-size: 2rem;
+    color: #0070f3;
+    margin-bottom: 20px;
+  }
+  
+  .list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .clientCard {
+    background-color: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: left;
+  }
+  
+  .clientCard h2 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 5px;
+  }
+  
+  .clientCard p {
+    font-size: 1rem;
+    color: #555;
+    margin: 5px 0;
+  }
+  
+  .link {
+    color: #0070f3;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  
+  .link:hover {
+    color: #005bb5;
+  }
+  
+  .emptyMessage {
+    font-size: 1.2rem;
+    color: #888;
+    margin-top: 20px;
+  }
+  
+  .buttonContainer {
+    margin-top: 30px;
+  }
+  
+  .button {
+    background-color: #0070f3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+  }
+  
+  .button:hover {
+    background-color: #005bb5;
+  }  
+
+  .clientCard {
+    position: relative;
+    padding: 20px;
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+    border-radius: 5px;
+  }
+  
+  .detailsButtonContainer {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+  }
+  
+  .detailsButton {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .detailsButton:hover {
+    background-color: #0056b3;
+  }
+  
+  .navButton {
+    background-color: red;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .navButton:hover {
+    background-color: #a12121;
+    color: white;
+  }
+
+  /* Añadir al archivo Projects.module.css o Clients.module.css */
+
+.container {
+  padding: 20px;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.clientCard {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.modifyButton, .createBillButton, .deleteButton {
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.modifyButton {
+  background-color: green;
+  color: white;
+  border: 1px solid green;
+}
+
+.createBillButton {
+  background-color: #0070f3;
+  color: white;
+  border: 1px solid #0070f3;
+}
+
+.deleteButton {
+  background-color: red;
+  color: white;
+  border: 1px solid red;
+}
+
+.modifyButton:hover {
+  background-color: darkgreen;
+}
+
+.createBillButton:hover {
+  background-color: darkblue;
+}
+
+.deleteButton:hover {
+  background-color: darkred;
+}
+
+/* Para los proyectos en estado 'En estudio' */
+.inStudy {
+  color: white;
+  background-color: red;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+/* Para los proyectos en estado 'En proceso' */
+.inProcess {
+  color: white;
+  background-color: yellow;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+/* Para los proyectos en estado 'Finalizado' */
+.completed {
+  color: white;
+  background-color: green;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+/* Estilo del pop-up */
+.deletePopup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popupContent {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 400px;
+  text-align: center;
+}
+
+.deletePopup h3 {
+  margin-bottom: 20px;
+}
+
+.deletePopup button {
+  margin: 10px;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.deleteButton {
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+.cancelButton {
+  background-color: #0070f3;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+.deletePopup button:hover {
+  opacity: 0.8;
+}
