@@ -8,7 +8,6 @@ import { useRouter } from "next/router";
 
 // Esquema de validación con YUP
 const schema = yup.object().shape({
-  name: yup.string().required("El nombre es obligatorio."),
   email: yup
     .string()
     .email("Correo electrónico inválido.")
@@ -34,37 +33,55 @@ export default function Register() {
   const router = useRouter();
 
   const onSubmit = async (data: any) => {
+    const payload = {
+      email: data.email.trim(),
+      password: data.password.trim(),
+    };
+  
+    console.log("Datos enviados al servidor:", JSON.stringify(payload, null, 2));
+  
     try {
-      const response = await apiClient.post("/api/user/register", data);
+      const response = await apiClient.post("/api/user/register", payload);
+      console.log("Respuesta del servidor:", response.data);
+  
       const token = response.data.token;
       if (token) {
         localStorage.setItem("jwt", token);
         setMessage("Registro exitoso. Por favor, valida tu cuenta.");
+        router.push("/auth/validate");
       } else {
+        console.warn("El servidor no devolvió un token.");
         setMessage("Registro exitoso, pero no se recibió token.");
       }
     } catch (error: any) {
-      if (error.response?.status === 400) {
-        if (error.response?.data?.message === "Correo ya registrado") {
-          setMessage("Este correo ya está registrado.");
-        } else if (error.response?.data?.message === "Contraseña demasiado corta") {
-          setMessage("La contraseña debe tener al menos 8 caracteres.");
+      console.error("Error durante la solicitud de registro:", error);
+  
+      if (error.response) {
+        console.error("Respuesta del servidor (error):", error.response.data);
+        console.error("Código de estado:", error.response.status);
+        console.error("Encabezados del servidor:", error.response.headers);
+  
+        if (error.response.status === 409) {
+          setMessage("El usuario ya existe.");
+        } else if (error.response.status === 422) {
+          setMessage("Los datos enviados no son válidos. Revisa los campos.");
         } else {
-          setMessage("Por favor, complete todos los campos requeridos.");
+          setMessage(
+            error.response.data.message || "Error desconocido en el registro."
+          );
         }
       } else {
-        setMessage(error.response?.data?.message || "Error al registrar.");
+        console.error("Error sin respuesta del servidor:", error.message);
+        setMessage("Error al conectar con el servidor. Intenta nuevamente más tarde.");
       }
     }
-  };
+  };  
 
   return (
     <div style={styles.container}>
       <div style={styles.formBox}>
         <h1 style={styles.title}>Registro</h1>
         <form onSubmit={handleSubmit(onSubmit)} style={styles.form}>
-          <input {...register("name")} placeholder="Nombre" style={styles.input} />
-          {errors.name?.message && <p style={styles.error}>{errors.name.message}</p>}
           <input {...register("email")} placeholder="Correo Electrónico" style={styles.input} />
           {errors.email?.message && <p style={styles.error}>{errors.email.message}</p>}
           <input
@@ -118,7 +135,7 @@ const styles = {
     display: "flex",
     flexDirection: "column" as const,
     gap: "15px",
-    padding: "10px", // Añade padding para separar los inputs de los bordes
+    padding: "10px",
   },
   input: {
     padding: "10px",
@@ -126,12 +143,12 @@ const styles = {
     borderRadius: "5px",
     fontSize: "1rem",
     width: "100%",
-    boxSizing: "border-box" as const, // Asegura que el padding no afecte el tamaño
+    boxSizing: "border-box" as const,
   },
   error: {
     color: "red",
     fontSize: "0.9rem",
-    marginTop: "-10px", // Reduce el espacio entre el error y el input
+    marginTop: "-10px",
     marginBottom: "5px",
   },
   buttonContainer: {
@@ -146,8 +163,8 @@ const styles = {
     cursor: "pointer",
     border: "none",
     fontWeight: "bold",
-    flex: "1", // Asegura que los botones sean del mismo ancho
-    margin: "0 5px", // Espacio entre los botones
+    flex: "1",
+    margin: "0 5px",
   },
   redButton: {
     backgroundColor: "#e63946",

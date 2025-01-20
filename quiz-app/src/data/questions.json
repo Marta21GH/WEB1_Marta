@@ -1,0 +1,35 @@
+[
+    {
+      "id": 1,
+      "question": "¿Qué es React?",
+      "options": [
+        "Un lenguaje de programación.",
+        "Una biblioteca de JavaScript para construir interfaces de usuario.",
+        "Un sistema operativo.",
+        "Un framework de CSS."
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 2,
+      "question": "¿Cuál de las siguientes no es una característica de React?",
+      "options": [
+        "Componentes reutilizables.",
+        "Virtual DOM.",
+        "Programación síncrona.",
+        "Renderizado del lado del servidor."
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 3,
+      "question": "¿Qué es JSX?",
+      "options": [
+        "Un nuevo lenguaje de programación.",
+        "Una herramienta de análisis de código.",
+        "Una extensión de sintaxis que permite escribir HTML dentro de JavaScript.",
+        "Un sistema de gestión de paquetes."
+      ],
+      "correctAnswer": 2
+    }
+]  

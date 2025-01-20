@@ -22,19 +22,6 @@ export default function Dashboard() {
     },
   });
 
-  // Estado para el formulario de proveedor
-  const [provider, setProvider] = useState({
-    name: "",
-    cif: "",
-    address: {
-      street: "",
-      number: 0,
-      postal: 0,
-      city: "",
-      province: "",
-    },
-  });
-
   useEffect(() => {
     const token = localStorage.getItem("jwt");
     const storedName = localStorage.getItem("userName");
@@ -72,32 +59,12 @@ export default function Dashboard() {
     }
   };
 
-  // Función para manejar los cambios en el formulario de proveedor
-  const handleProviderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-
-    if (name === "street" || name === "number" || name === "postal" || name === "city" || name === "province") {
-      setProvider((prevProvider) => ({
-        ...prevProvider,
-        address: {
-          ...prevProvider.address,
-          [name]: value,
-        },
-      }));
-    } else {
-      setProvider((prevProvider) => ({
-        ...prevProvider,
-        [name]: value,
-      }));
-    }
-  };
-
   // Función para crear un nuevo cliente
   const createClient = async () => {
     try {
       const response = await apiClient.post("/api/client", client); // Cambié /api/clients por /api/client
       alert(`Cliente creado con ID: ${response.data._id}`);
-      
+
       // Limpiar los campos del formulario
       setClient({
         name: "",
@@ -121,39 +88,10 @@ export default function Dashboard() {
     }
   };
 
-  // Función para crear un nuevo proveedor
-  const createProvider = async () => {
-    try {
-      const response = await apiClient.post("/api/provider", provider); // Cambié /api/providers por /api/provider
-      alert(`Proveedor creado con ID: ${response.data._id}`);
-      
-      // Limpiar los campos del formulario
-      setProvider({
-        name: "",
-        cif: "",
-        address: {
-          street: "",
-          number: 0,
-          postal: 0,
-          city: "",
-          province: "",
-        },
-      });
-    } catch (error: unknown) {
-      if (error instanceof AxiosError) {
-        console.error("Error al crear el proveedor:", error.response?.data || error.message);
-        alert(`Error al crear el proveedor. Detalles: ${error.response?.data?.message || error.message}`);
-      } else {
-        console.error("Error desconocido:", error);
-        alert("Ha ocurrido un error inesperado.");
-      }
-    }
-  };
-
   return (
     <div className={styles.container}>
       <header className={styles.header}>
-        <h1 className={styles.welcome}>Bienvenido, {userName}!</h1>
+        <h1 className={styles.welcome}>Bienvenido!</h1>
         <nav className={styles.nav}>
           <Link href="/clients">
             <button className={styles.navButton}>Listado de Clientes</button>
@@ -228,9 +166,11 @@ export default function Dashboard() {
         </div>
       </div>
 
-      <button className={styles.logoutButton} onClick={handleLogout}>
-        Cerrar Sesión
-      </button>
+      <div className={styles.actions}>
+        <button className={styles.logoutButton} onClick={handleLogout}>
+          Cerrar Sesión
+        </button>
+      </div>
     </div>
   );
 }
